@@ -3,6 +3,14 @@ const app = express();
 const port = 3000;
 require('dotenv').config();
 
+const cors = require('cors');
+var corsOptions = {
+    origin: ['http://localhost:3000', 'http://127.0.0.1:5500'],
+    optionsSuccessStatus: 200,
+  };
+  
+app.use(cors(corsOptions));
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
