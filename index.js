@@ -1,14 +1,19 @@
-const { json } = require('express');
 const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-  fetch('https://pokeapi.co/api/v2/pokemon')
-    .then((response) => response.json())
-    .then((json) => res.send(json))
-    .catch((err) => res.status(500, { message: 'Request Failed' }));
-});
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
+const database = require('./database');
+
+/****** ROUTES ******/
+const { index, add } = require('./controllers');
+
+app.get('/', index);
+app.post('/add', add);
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
