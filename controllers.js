@@ -9,7 +9,7 @@ const index = (req, res) => {
 };
 
 const show = (req, res) => {
-  const { id } = req.body;
+  const id = req.query.id;
 
   fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then((response) => response.json())
