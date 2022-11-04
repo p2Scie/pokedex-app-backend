@@ -1,4 +1,3 @@
-const express = require('express');
 const { Pokemon } = require('./pokemonModel');
 
 const index = (req, res) => {
