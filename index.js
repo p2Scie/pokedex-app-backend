@@ -9,12 +9,13 @@ app.use(bodyParser.json());
 const database = require('./database');
 
 /****** ROUTES ******/
-const { index, add, favorites, edit } = require('./controllers');
+const { index, add, favorites, edit, remove } = require('./controllers');
 
 app.get('/', index);
 app.post('/add', add);
 app.get('/favorites', favorites);
 app.put('/edit', edit);
+app.delete('/delete', remove);
 
 
 app.listen(port, () => {
